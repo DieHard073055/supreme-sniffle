@@ -63,19 +63,19 @@ const https_request = async (options, payload) => {
   });
 }
 
+const get_btc_price = async () => {
+  const ts = Date.now();
+  const path = '/api/markets/BTC/USD';
+  const method = 'GET';
+  const options = generate_options(ts, method, path, null);
+  let btc_price = null;
+  await https_request(options, null)
+    .then(price => btc_price = price["result"])
+    .catch(console.error)
+  return btc_price;
+}
+
 const get_balance = async () => {
-  /*
-    response
-    [{                                                                                                                   
-      coin: 'XRP',                                                                                                      
-      total: 0,                                                                                                         
-      free: 0,                                                                                                          
-      availableForWithdrawal: 0,                                                                                        
-      availableWithoutBorrow: 0,                                                                                        
-      usdValue: 0,                                                                                                      
-      spotBorrow: 0                                                                                                     
-    }]
-  */
   const ts = Date.now();
   const path = '/api/wallet/all_balances';
   const method = 'GET';
@@ -103,7 +103,7 @@ const place_order = async (market, side, price, size) => {
     "type": "limit",
     "reduceOnly": false,
     "ioc": false,
-    "postOnly": false,
+    "postOnly": true,
     "clientId": null
   })
 
@@ -114,4 +114,5 @@ const place_order = async (market, side, price, size) => {
     .catch(console.error);
 }
 
-module.exports = { place_order, get_balance }
+
+module.exports = { place_order, get_balance, get_btc_price }
