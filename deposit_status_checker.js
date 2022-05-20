@@ -44,7 +44,7 @@ const balance_logger = async (symbol = 'BTC') => {
 }
 
 const should_trigger = (balance, old_balance, threshold) => {
-  return (old_balance - balance) > threshold;
+  return (balance - old_balance) > threshold;
 }
 
 const has_been_deposited = async () => {
