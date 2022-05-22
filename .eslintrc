@@ -1,0 +1,60 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:import/typescript"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js",".ts"]
+      }
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "anti-trojan-source"
+  ],
+  "ignorePatterns": ["**/*.d.ts", "*.html"],
+  "rules": {
+    "import/no-import-module-exports": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "no-trailing-spaces": ["error", { "ignoreComments": true }],
+    "indent": ["error", 2],
+    "object-curly-newline": ["error", {
+      "ObjectExpression": { "multiline": true, "minProperties": 3 },
+      "ObjectPattern": { "multiline": true, "minProperties": 3 },
+      "ImportDeclaration": { "multiline": true, "minProperties": 3 },
+      "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+    }],
+    "import/no-extraneous-dependencies": [
+      "error"
+    ],
+    "import/prefer-default-export": "off",
+    "anti-trojan-source/no-bidi": "error"
+  }
+}
