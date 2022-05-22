@@ -11,9 +11,7 @@ module.exports = {
       btc_sell_percentage: 0.88,
       btc_wallet: '1Fq38FA9XNqMZCptvdxfKEiESk9ZapYYLN',
     },
-    ftx: {
-      markets: 'https://ftx.com/api/markets',
-    }
+    ftx: { markets: 'https://ftx.com/api/markets' },
   },
   test: {
     my: {
@@ -21,5 +19,5 @@ module.exports = {
       salary_trigger_threshold: 0.01,
       btc_sell_percentage: 0.88,
     },
-  }
-}
+  },
+};
