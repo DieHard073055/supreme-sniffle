@@ -24,8 +24,10 @@ const main = async (usd_amount_to_sell, highest_percentage, number_of_orders) =>
   for (let i = 0; i < _number_of_orders; i++) {
     const current_price = price + (i * diff)
     console.log(`place_order("BTC/USD", "sell", ${current_price}, ${total_btc_to_sell / _number_of_orders});`);
+    // await place_order("BTC/USD", "sell", current_price, total_btc_to_sell / _number_of_orders);
     total += (total_btc_to_sell / _number_of_orders) * current_price
   }
+  console.log("total: " + total);
 }
 
 let args = process.argv.slice(2);
