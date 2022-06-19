@@ -91,7 +91,14 @@ const get_balance = async () => {
   return balances
 }
 
+// just be nice to ftx
+const wait_2ms = async () => {
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  await delay(2);
+}
+
 const place_order = async (market, side, price, size) => {
+  await wait_2ms();
   const ts = Date.now();
   const path = '/api/orders'
   const method = 'POST'
@@ -109,7 +116,7 @@ const place_order = async (market, side, price, size) => {
 
   const options = generate_options(ts, method, path, rq_payload);
 
-  https_request(options, rq_payload)
+  await https_request(options, rq_payload)
     .then(console.log)
     .catch(console.error);
 }
